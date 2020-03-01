@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: goldpoints_ci_test
+  port: 5432
