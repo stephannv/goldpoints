@@ -3,6 +3,8 @@ SimpleCov.start do
   add_group 'API', 'app/api'
   add_group 'Entities', 'app/entities'
   add_group 'Models', 'app/models'
+  add_group 'Lib', 'app/lib'
+  add_group 'Extensions', 'lib/extensions'
 
   add_filter 'config'
   add_filter 'spec'

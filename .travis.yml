@@ -19,12 +19,13 @@ jobs:
         - postgresql
 
       addons:
-        postgresql: "12.2"
+        postgresql: "12.1"
 
       before_install:
         - sudo apt-get update
         - sudo apt-get --yes remove postgresql\*
         - sudo apt-get install -y postgresql-12 postgresql-client-12
+        - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/12/main/postgresql.conf
         - sudo cp /etc/postgresql/{9.6,12}/main/pg_hba.conf
         - sudo service postgresql restart 12
         - psql -c 'CREATE ROLE travis SUPERUSER LOGIN CREATEDB;' -U postgres

@@ -3,14 +3,20 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem 'bcrypt', '3.1.13'
 gem 'bootsnap', '1.4.6', require: false
+gem 'countries', '3.0.1'
 gem 'grape', '1.3.0'
 gem 'grape-entity', '0.8.0'
 gem 'interactor', '3.1.2'
+gem 'jwt', '2.2.1'
+gem 'money-rails', '1.13.3'
 gem 'pg', '1.2.2'
 gem 'puma', '4.3.3'
 gem 'rack-cors', '1.1.1'
 gem 'rails', '6.0.2.1'
+gem 'scenic', '1.5.2'
+gem 'simple_enum', '2.3.2'
 gem 'tzinfo-data', '1.2.6', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
