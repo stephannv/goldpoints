@@ -39,8 +39,17 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'
 
+Rails/ApplicationRecord:
+  Exclude:
+    - 'app/models/balance.rb'
+    - 'app/models/points_expiration.rb'
+
 Style/AccessModifierDeclarations:
   EnforcedStyle: inline
+
+Style/AsciiComments:
+  Exclude:
+    - 'config/initializers/money.rb'
 
 Style/Documentation:
   Enabled: false
