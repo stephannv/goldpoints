@@ -92,7 +92,7 @@ RSpec.describe GoldPoints::V1::BaseAPI, type: :api do
 
       it 'formats params errors as json' do
         get '/v1/example'
-        expect(response.body).to eq({ errors: ['required_param is missing'] }.to_json)
+        expect(response.body).to eq({ errors: [{ 'required_param' => 'is missing' }] }.to_json)
       end
 
       it 'responds with 400 http code' do
@@ -150,6 +150,13 @@ RSpec.describe GoldPoints::V1::BaseAPI, type: :api do
         it 'doesn`t raise error' do
           Rails.env = 'production'
           expect { get '/v1/example' }.to_not raise_error
+          Rails.env = 'test'
+        end
+
+        it 'sends exception do rollbar' do
+          Rails.env = 'production'
+          expect(Rollbar).to receive(:error).with(an_instance_of(RuntimeError))
+          get '/v1/example'
           Rails.env = 'test'
         end
       end
