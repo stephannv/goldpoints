@@ -8,7 +8,7 @@ RSpec.describe Token, type: :lib do
 
   describe '.encode' do
     it 'encodes payload with expiration time' do
-      jwt_token = JWT.encode(payload.merge('exp' => exp), Rails.application.secrets.secret_key_base)
+      jwt_token = JWT.encode(payload.merge('exp' => exp), Rails.application.credentials[:secret_key_base])
       expect(token).to eq jwt_token
     end
   end
