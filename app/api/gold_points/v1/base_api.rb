@@ -15,7 +15,8 @@ module GoldPoints
       end
 
       rescue_from Grape::Exceptions::ValidationErrors do |e|
-        error!({ errors: e.full_messages }, 400)
+        errors_hash = e.map { |attr, msg| { attr.first => msg } }
+        error!({ errors: errors_hash }, 400)
       end
 
       rescue_from ActiveRecord::RecordNotFound do |e|
@@ -24,6 +25,8 @@ module GoldPoints
 
       rescue_from :all do |e|
         raise e if Rails.env.development?
+
+        Rollbar.error(e)
 
         error!({ error: 'Internal server error' }, 500)
       end

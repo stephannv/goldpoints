@@ -15,6 +15,7 @@ gem 'pg', '1.2.2'
 gem 'puma', '4.3.3'
 gem 'rack-cors', '1.1.1'
 gem 'rails', '6.0.2.1'
+gem 'rollbar', '2.24.0'
 gem 'scenic', '1.5.2'
 gem 'simple_enum', '2.3.2'
 gem 'tzinfo-data', '1.2.6', platforms: %i[mingw mswin x64_mingw jruby]
