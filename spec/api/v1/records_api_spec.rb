@@ -5,22 +5,6 @@ RSpec.describe GoldPoints::V1::RecordsAPI, type: :api do
 
   include_examples 'authenticate routes'
 
-  describe 'GET /v1/records' do
-    let(:record) { build(:record, :with_fake_id) }
-
-    before { allow(Records::List).to receive(:call).with(user: current_user).and_return(double(records: [record])) }
-
-    it 'has http status OK' do
-      get '/v1/records'
-      expect(response).to have_http_status(:ok)
-    end
-
-    it 'renders records' do
-      get '/v1/records'
-      expect(response.body).to eq({ records: [RecordEntity.new(record)] }.to_json)
-    end
-  end
-
   describe 'POST /v1/records' do
     let(:record) { build(:record, :with_fake_id) }
     let(:record_params) { attributes_for(:record).slice(:group, :points, :country_code, :occurred_at, :description) }
