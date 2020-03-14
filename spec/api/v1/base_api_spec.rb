@@ -15,6 +15,7 @@ RSpec.describe GoldPoints::V1::BaseAPI, type: :api do
     subject { described_class.routes.map { |r| [r.request_method, r.path] } }
 
     [
+      GoldPoints::V1::AccountStatementsAPI,
       GoldPoints::V1::AuthenticationsAPI,
       GoldPoints::V1::BalancesAPI,
       GoldPoints::V1::CountriesAPI,

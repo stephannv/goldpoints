@@ -35,6 +35,7 @@ module GoldPoints
         authenticate_request! unless public_route?
       end
 
+      mount AccountStatementsAPI
       mount AuthenticationsAPI
       mount BalancesAPI
       mount CountriesAPI

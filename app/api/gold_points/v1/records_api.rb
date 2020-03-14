@@ -7,13 +7,6 @@ module GoldPoints
         end
       end
 
-      desc 'List records'
-      get '/records' do
-        result = Records::List.call(user: current_user)
-
-        present :records, result.records, with: ::RecordEntity
-      end
-
       desc 'Create a new record'
       params do
         requires :record, type: Hash do
